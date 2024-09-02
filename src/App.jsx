@@ -63,9 +63,13 @@ function App() {
   allOptions.push(okCountry)
 
   // Manage points and questions count
-  function pointsCount(isCorrect){
+  function pointsCount(isCorrect, seenHint){
     if(isCorrect){
-      setPoints(points => points + 1)
+      if(seenHint){
+        setPoints(points => points + 0.5)
+      } else {
+        setPoints(points => points + 1)
+      }
       console.log(points)
       setQuestionsCount(questionsCount => questionsCount + 1)
       console.log(questionsCount)
@@ -80,13 +84,14 @@ function App() {
   return (
     <div className="App">
 
-      {questionsCount < 5 ? 
+      {questionsCount <= 4 ? 
         <Quiz 
           countries={allOptions}
           okCountryData={okCountryData}
           okCountry={okCountry}
           okCountryFlag={okCountryFlag}
           handleCount={pointsCount}
+          score={points}
           questionsCount={questionsCount}
         /> 
       :

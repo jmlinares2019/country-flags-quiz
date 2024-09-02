@@ -4,13 +4,15 @@ function Quiz(props){
     console.log("Component rendered");
     console.log(props.okCountryData)
 
-    const { countries, okCountryData, okCountry, okCountryFlag, handleCount, questionsCount } = props;
+    const { countries, okCountryData, okCountry, okCountryFlag, handleCount, score, questionsCount } = props;
 
     const capital = okCountryData?.capital[0];
 
     const [answer, setAnswer] = useState("");
 
-    const [showCapital, setShowCapital] = useState(false);
+    const [showHint, setShowHint] = useState(false);
+
+    const [seenHint, setSeenHint] = useState(false);
 
     const handleClick = (e) => {
         setAnswer(e.target.value);
@@ -22,33 +24,39 @@ function Quiz(props){
         let isCorrect = false;
         if(answer === okCountry){
             isCorrect = true;
-            handleCount(isCorrect);
+            handleCount(isCorrect, seenHint);
         } else {
             handleCount(isCorrect);
         } 
     }
 
     // showing / hiding capital
-    function toggleCapital(){
-        setShowCapital(showCapital => !showCapital)
+    function toggleHint(){
+        setShowHint(showHint => !showHint)
+        setSeenHint(true);
     }
 
     // hide capital when new question
     useEffect(() => {
-        setShowCapital(false)
+        setShowHint(false)
+        setSeenHint(false)
     }, [questionsCount])
 
     return (
         <div className="container">
+            <div className="row">
+                <p>Round {questionsCount + 1}</p>
+                <p>Score: {score}</p>
+            </div>
             <div className="row">
                 <div className="col-6 flag-wrapper">
                     <img 
                         src={okCountryFlag} 
                         className="w-100"
                     />
-                    <button onClick={toggleCapital}>
+                    <button onClick={toggleHint}>
                         <i className="bi bi-info-circle-fill"></i>
-                        <p style={{ display: showCapital ? "inline" : "none" }}>Its capital is {capital}</p>
+                        <p style={{ display: showHint ? "inline" : "none" }}>Its capital is {capital}</p>
                     </button>
                     
                 </div>
