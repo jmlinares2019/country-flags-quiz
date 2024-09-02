@@ -55,6 +55,7 @@ function App() {
   // Select right country (correct answer) 
   const randomIndex = Math.floor(Math.random() * 250);
   // The ?. operator is like the . chaining operator, except that instead of causing an error if a reference is nullish (null or undefined), the expression short-circuits with a return value of undefined
+  const okCountryData = countriesData[randomIndex];
   const okCountry = countriesData[randomIndex]?.name.common;
   const okCountryFlag = countriesData[randomIndex]?.flags.png;
 
@@ -62,9 +63,13 @@ function App() {
   allOptions.push(okCountry)
 
   // Manage points and questions count
-  function pointsCount(isCorrect){
+  function pointsCount(isCorrect, seenHint){
     if(isCorrect){
-      setPoints(points => points + 1)
+      if(seenHint){
+        setPoints(points => points + 0.5)
+      } else {
+        setPoints(points => points + 1)
+      }
       console.log(points)
       setQuestionsCount(questionsCount => questionsCount + 1)
       console.log(questionsCount)
@@ -79,12 +84,15 @@ function App() {
   return (
     <div className="App">
 
-      {questionsCount < 5 ? 
+      {questionsCount <= 4 ? 
         <Quiz 
           countries={allOptions}
+          okCountryData={okCountryData}
           okCountry={okCountry}
           okCountryFlag={okCountryFlag}
           handleCount={pointsCount}
+          score={points}
+          questionsCount={questionsCount}
         /> 
       :
         <Results result={points}/>
