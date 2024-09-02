@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 
 function Quiz(props){
-    console.log("Component rendered");
-    console.log(props.okCountryData)
 
     const { countries, okCountryData, okCountry, okCountryFlag, handleCount, score, questionsCount } = props;
 

@@ -62,6 +62,17 @@ function App() {
   // Push right country to wrong options array
   allOptions.push(okCountry)
 
+  // shuffle options (so that correct is not always last)
+  const shuffle = (options) => {
+    for(let i = options.length - 1; i > 0; i--){
+        const j = Math.floor(Math.random() * (i + 1));
+        [options[i], options[j]] = [options[j], options[i]]
+    }
+    return options;
+  }
+
+  const shuffledCountries = shuffle(allOptions);
+
   // Manage points and questions count
   function pointsCount(isCorrect, seenHint){
     if(isCorrect){
@@ -86,7 +97,7 @@ function App() {
 
       {questionsCount <= 4 ? 
         <Quiz 
-          countries={allOptions}
+          countries={shuffledCountries}
           okCountryData={okCountryData}
           okCountry={okCountry}
           okCountryFlag={okCountryFlag}
