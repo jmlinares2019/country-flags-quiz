@@ -87,6 +87,7 @@ function App() {
           okCountry={okCountry}
           okCountryFlag={okCountryFlag}
           handleCount={pointsCount}
+          questionsCount={questionsCount}
         /> 
       :
         <Results result={points}/>

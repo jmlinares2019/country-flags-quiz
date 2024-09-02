@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Quiz(props){
     console.log("Component rendered");
     console.log(props.okCountryData)
 
-    const { countries, okCountryData, okCountry, okCountryFlag, handleCount } = props;
+    const { countries, okCountryData, okCountry, okCountryFlag, handleCount, questionsCount } = props;
 
     const capital = okCountryData?.capital[0];
 
@@ -28,9 +28,15 @@ function Quiz(props){
         } 
     }
 
+    // showing / hiding capital
     function toggleCapital(){
         setShowCapital(showCapital => !showCapital)
     }
+
+    // hide capital when new question
+    useEffect(() => {
+        setShowCapital(false)
+    }, [questionsCount])
 
     return (
         <div className="container">
@@ -51,6 +57,7 @@ function Quiz(props){
                     onSubmit={handleAnswer}>
                     {countries?.map((country, index) => (
                         <div 
+                            // assigning a unique key, unique even for every time the component re-renders (next question) prevents inputs being checked by default cause they share key with previous ones
                             key={`${index} + "-" + ${country}`}
                             className="form-check">
                             <label 
