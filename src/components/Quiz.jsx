@@ -10,6 +10,8 @@ function Quiz(props){
 
     const [answer, setAnswer] = useState("");
 
+    const [showCapital, setShowCapital] = useState(false);
+
     const handleClick = (e) => {
         setAnswer(e.target.value);
         console.log(answer)
@@ -26,9 +28,8 @@ function Quiz(props){
         } 
     }
 
-    let show = false;
-    function showCapital(){
-        show = !show;
+    function toggleCapital(){
+        setShowCapital(showCapital => !showCapital)
     }
 
     return (
@@ -39,9 +40,9 @@ function Quiz(props){
                         src={okCountryFlag} 
                         className="w-100"
                     />
-                    <button onClick={showCapital}>
+                    <button onClick={toggleCapital}>
                         <i className="bi bi-info-circle-fill"></i>
-                        <p style={{ display: "inline" }}>Its capital is {capital}</p>
+                        <p style={{ display: showCapital ? "inline" : "none" }}>Its capital is {capital}</p>
                     </button>
                     
                 </div>
