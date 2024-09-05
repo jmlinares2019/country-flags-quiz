@@ -1,7 +1,7 @@
+import { BrowserRouter, Routes, Route, Link, NavLink } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-// import Navbar from './components/Navbar'
+import Home from './components/Home';
 import Quiz from './components/Quiz'
-import Results from './components/Results'
 
 function App() {
 
@@ -81,34 +81,36 @@ function App() {
       } else {
         setPoints(points => points + 1)
       }
-      console.log(points)
       setQuestionsCount(questionsCount => questionsCount + 1)
-      console.log(questionsCount)
     } else {
-      console.log(points)
       setQuestionsCount(questionsCount => questionsCount + 1)
-      console.log(questionsCount)
     }
 
   }
 
   return (
     <div className="App">
-
-      {questionsCount <= 4 ? 
-        <Quiz 
-          countries={shuffledCountries}
-          okCountryData={okCountryData}
-          okCountry={okCountry}
-          okCountryFlag={okCountryFlag}
-          handleCount={pointsCount}
-          score={points}
-          questionsCount={questionsCount}
-        /> 
-      :
-        <Results result={points}/>
-      }
-
+      <BrowserRouter>
+        <Routes>
+          <Route 
+            index 
+            element={<Home />} />
+          <Route 
+            path="quiz" 
+            element={<Quiz 
+                        countries={shuffledCountries}
+                        okCountryData={okCountryData}
+                        okCountry={okCountry}
+                        okCountryFlag={okCountryFlag}
+                        handleCount={pointsCount}
+                        score={points}
+                        setScore={setPoints}
+                        questionsCount={questionsCount}
+                        setQuestionsCount={setQuestionsCount}
+                      />}         
+          />
+        </Routes>
+      </BrowserRouter>
     </div>
   )
 }
