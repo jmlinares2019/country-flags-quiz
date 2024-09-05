@@ -9,12 +9,14 @@ function Results(props){
 
     return (
         <>
-        <p>You scored {score} out of {questionsCount}</p>
-        { score >= 3 ? 
-            "Congratulations, you won!"
-        :
-            "Oh, looks like you're a looser"
-        }
+        <div className="row">
+            <p>You scored {score} out of {questionsCount}</p>
+            { score >= 3 ? 
+                "Congratulations, you won!"
+            :
+                "Oh, looks like you're a looser"
+            }
+        </div>
         <div className="row">
             <button onClick={startOver}>Try again</button>
             <button>
