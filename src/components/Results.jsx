@@ -1,14 +1,26 @@
 function Results(props){
     
-    const result = props.result;
+    const { questionsCount, setQuestionsCount, score, setScore } = props;
+
+    function startOver(){
+        setQuestionsCount(0);
+        setScore(0);
+    }
 
     return (
         <>
-        <p>Your score is {result}</p>
-        { result >= 3 ? 
+        <p>You scored {score} out of {questionsCount}</p>
+        { score >= 3 ? 
             "Congratulations, you won!"
         :
-            "Oh, looks like you're a looser"}
+            "Oh, looks like you're a looser"
+        }
+        <div className="row">
+            <button onClick={startOver}>Try again</button>
+            <button>
+                <a href="/">Back to home</a>
+            </button>
+        </div>
         </>
     )
 } 

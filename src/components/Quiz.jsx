@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 
+import Results from './Results';
+
 function Quiz(props){
 
-    const { countries, okCountryData, okCountry, okCountryFlag, handleCount, score, questionsCount } = props;
+    const { countries, okCountryData, okCountry, okCountryFlag, handleCount, score, setScore, questionsCount, setQuestionsCount } = props;
 
     const capital = okCountryData?.capital[0];
 
@@ -42,11 +44,13 @@ function Quiz(props){
 
     return (
         <div className="container">
+        {questionsCount < 5 ? 
+            <>
             <div className="row">
                 <p>Round {questionsCount + 1}</p>
                 <p>Score: {score}</p>
             </div>
-            <div className="row">
+            <div className="row quiz-wrapper">
                 <div className="col-6 flag-wrapper">
                     <img 
                         src={okCountryFlag} 
@@ -86,6 +90,15 @@ function Quiz(props){
                     </button>
                 </form>
             </div>
+            </>
+        :
+            <Results
+                questionsCount={questionsCount}
+                setQuestionsCount={setQuestionsCount}
+                score={score} 
+                setScore={setScore}
+            />
+        }
         </div>      
     )
 }
