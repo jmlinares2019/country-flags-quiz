@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Link, NavLink } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Home from './components/Home';
-import Quiz from './components/Quiz'
+import Quiz from './components/Quiz';
 
 function App() {
 
