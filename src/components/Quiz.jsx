@@ -1,12 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 import Results from './Results';
 
 function Quiz(props){
+    console.log("Component rendered!");
 
     const { countries, okCountryData, okCountry, okCountryFlag, handleCount, score, setScore, questionsCount, setQuestionsCount } = props;
 
     const capital = okCountryData?.capital[0];
+
+    // targeting submit button for disabling / enabling 
+    let submit = useRef(null);
 
     const [answer, setAnswer] = useState("");
 
@@ -16,18 +20,23 @@ function Quiz(props){
 
     const handleClick = (e) => {
         setAnswer(e.target.value);
-        console.log(answer)
+        // enable "submit" button when one option is selected
+        submit.current.removeAttribute("disabled")
     }
 
     function handleAnswer(e){
         e.preventDefault();
-        let isCorrect = false;
-        if(answer === okCountry){
-            isCorrect = true;
-            handleCount(isCorrect, seenHint);
-        } else {
-            handleCount(isCorrect);
-        } 
+        // if (locked === false){
+            let isCorrect = false;
+            if(answer === okCountry){
+                isCorrect = true;
+                handleCount(isCorrect, seenHint);
+            } else {
+                handleCount(isCorrect);
+            }
+            // disable "submit" button until one option is selected
+            submit.current.setAttribute("disabled", ""); 
+        // }
     }
 
     // showing / hiding capital
@@ -47,8 +56,7 @@ function Quiz(props){
         {questionsCount < 5 ? 
             <>
             <div className="row">
-                <p>Round {questionsCount + 1}</p>
-                <p>Score: {score}</p>
+                <p className="questions-count">Round {questionsCount} of 5</p>
             </div>
             <div className="row quiz-wrapper">
                 <div className="col-6 flag-wrapper">
@@ -85,7 +93,9 @@ function Quiz(props){
                         </div>
                     ))}
                     <button 
-                        className="btn btn-primary">
+                        className="btn btn-primary"
+                        disabled
+                        ref={submit}>
                         Submit
                     </button>
                 </form>
