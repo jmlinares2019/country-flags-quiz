@@ -9,7 +9,7 @@ function Results(props){
 
     return (
         <>
-        <div className="row">
+        <div className="row results-wrapper">
             <p>You scored {score} out of {questionsCount}</p>
             { score >= 3 ? 
                 "Congratulations, you won!"
@@ -17,11 +17,15 @@ function Results(props){
                 "Oh, looks like you're a looser"
             }
         </div>
-        <div className="row">
-            <button onClick={startOver}>Try again</button>
-            <button>
-                <a href="/">Back to home</a>
-            </button>
+        <div className="row buttons-wrapper">
+            <div className="col-6">
+                <button className="btn restart-btn" onClick={startOver}>Try again</button>
+            </div>
+            <div className="col-6">
+                <button className="btn home-btn">
+                    <a href="/">Back to home</a>
+                </button>
+            </div>
         </div>
         </>
     )

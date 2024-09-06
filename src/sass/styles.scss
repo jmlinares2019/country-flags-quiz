@@ -4,10 +4,13 @@
 
 // Abstracts
 @import './abstracts/variables';
+@import './abstracts/mixins';
 @import './abstracts/fonts';
 
 // Components
+@import './components/home';
 @import './components/quiz';
+@import './components/results';
 
 div{
     // border: 1px solid purple;
@@ -16,4 +19,12 @@ div{
 body{
     font-family: 'Nunito', sans-serif;
     background-color: lightgreen;
+}
+
+.main-container{
+    max-width: 680px;
+    margin-top: 100px;
+    padding: 30px 40px;
+    background-color: $white;
+    box-shadow: 12px 12px 2px 1px $shadow;
 }

@@ -54,7 +54,7 @@ function Quiz(props){
     }, [questionsCount])
 
     return (
-        <div className="container main-wrapper">
+        <>
         {questionsCount < 5 ? 
             <>
             <div className="row data-wrapper">
@@ -118,7 +118,7 @@ function Quiz(props){
                 setScore={setScore}
             />
         }
-        </div>      
+        </>     
     )
 }
 

@@ -90,27 +90,29 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route 
-            index 
-            element={<Home />} />
-          <Route 
-            path="quiz" 
-            element={<Quiz 
-                        countries={shuffledCountries}
-                        okCountryData={okCountryData}
-                        okCountry={okCountry}
-                        okCountryFlag={okCountryFlag}
-                        handleCount={pointsCount}
-                        score={points}
-                        setScore={setPoints}
-                        questionsCount={questionsCount}
-                        setQuestionsCount={setQuestionsCount}
-                      />}         
-          />
-        </Routes>
-      </BrowserRouter>
+      <div className="container main-container">
+        <BrowserRouter>
+          <Routes>
+            <Route 
+              index 
+              element={<Home />} />
+            <Route 
+              path="quiz" 
+              element={<Quiz 
+                          countries={shuffledCountries}
+                          okCountryData={okCountryData}
+                          okCountry={okCountry}
+                          okCountryFlag={okCountryFlag}
+                          handleCount={pointsCount}
+                          score={points}
+                          setScore={setPoints}
+                          questionsCount={questionsCount}
+                          setQuestionsCount={setQuestionsCount}
+                        />}         
+            />
+          </Routes>
+        </BrowserRouter>
+      </div>
     </div>
   )
 }
