@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Link, NavLink } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Home from './components/Home';
-import Quiz from './components/Quiz'
+import Quiz from './components/Quiz';
 
 function App() {
 
@@ -9,7 +9,7 @@ function App() {
 
   const [points, setPoints] = useState(0);
 
-  const [questionsCount, setQuestionsCount] = useState(1);
+  const [questionsCount, setQuestionsCount] = useState(0);
 
   // Using try / catch
   /* useEffect(() => {
@@ -90,27 +90,30 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route 
-            index 
-            element={<Home />} />
-          <Route 
-            path="quiz" 
-            element={<Quiz 
-                        countries={shuffledCountries}
-                        okCountryData={okCountryData}
-                        okCountry={okCountry}
-                        okCountryFlag={okCountryFlag}
-                        handleCount={pointsCount}
-                        score={points}
-                        setScore={setPoints}
-                        questionsCount={questionsCount}
-                        setQuestionsCount={setQuestionsCount}
-                      />}         
-          />
-        </Routes>
-      </BrowserRouter>
+      <div className="container main-container">
+        <BrowserRouter>
+          <Routes>
+            <Route 
+              index 
+              element={<Home />} />
+            <Route 
+              path="quiz" 
+              element={<Quiz 
+                          countries={shuffledCountries}
+                          okCountryData={okCountryData}
+                          okCountry={okCountry}
+                          okCountryFlag={okCountryFlag}
+                          handleCount={pointsCount}
+                          score={points}
+                          setScore={setPoints}
+                          questionsCount={questionsCount}
+                          setQuestionsCount={setQuestionsCount}
+                        />}         
+            />
+          </Routes>
+        </BrowserRouter>
+      </div>
+      <p>.</p>
     </div>
   )
 }

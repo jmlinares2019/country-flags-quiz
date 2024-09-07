@@ -7,6 +7,8 @@ function Quiz(props){
 
     const { countries, okCountryData, okCountry, okCountryFlag, handleCount, score, setScore, questionsCount, setQuestionsCount } = props;
 
+    const totalQuestions = 5;
+
     const capital = okCountryData?.capital[0];
 
     // targeting submit button for disabling / enabling 
@@ -21,7 +23,8 @@ function Quiz(props){
     const handleClick = (e) => {
         setAnswer(e.target.value);
         // enable "submit" button when one option is selected
-        submit.current.removeAttribute("disabled")
+        submit.current.removeAttribute("disabled");
+        submit.current.classList.add("enabled");
     }
 
     function handleAnswer(e){
@@ -36,6 +39,7 @@ function Quiz(props){
             }
             // disable "submit" button until one option is selected
             submit.current.setAttribute("disabled", ""); 
+            submit.current.classList.remove("enabled");
         // }
     }
 
@@ -52,64 +56,71 @@ function Quiz(props){
     }, [questionsCount])
 
     return (
-        <div className="container">
-        {questionsCount < 5 ? 
+        <>
+        {questionsCount < totalQuestions ? 
             <>
-            <div className="row">
-                <p className="questions-count">Round {questionsCount} of 5</p>
+            <div className="row data-wrapper">
+                <h1 className="quiz-title">Flags Quiz</h1>
+                <p className="questions-count">Round {questionsCount + 1} of {totalQuestions}</p>
+                <p className="hint-warning">Click the <span className="highlight">info button</span> below the flag to see the <span className="highlight">country's capital</span>. But if you guess correct, your will <span className="highlight">only score 0.5 points</span> for this flag.</p>
             </div>
             <div className="row quiz-wrapper">
-                <div className="col-6 flag-wrapper">
-                    <img 
-                        src={okCountryFlag} 
-                        className="w-100"
-                    />
-                    <button onClick={toggleHint}>
+                <div className="col-sm-6 question-wrapper">
+                    <div className="flag-wrapper"> 
+                        <img 
+                            src={okCountryFlag} 
+                            className="flag"
+                        />
+                    </div>
+                    <button
+                        className="btn hint-btn" 
+                        onClick={toggleHint}>
                         <i className="bi bi-info-circle-fill"></i>
                         <p style={{ display: showHint ? "inline" : "none" }}>Its capital is {capital}</p>
                     </button>
-                    
                 </div>
-                <form 
-                    className="col-6 form-wrapper"
+                
+                <form className="col-sm-6 form-wrapper"
                     onSubmit={handleAnswer}>
+                    <div className="options-wrapper">
                     {countries?.map((country, index) => (
                         <div 
                             // assigning a unique key, unique even for every time the component re-renders (next question) prevents inputs being checked by default cause they share key with previous ones
                             key={`${index} + "-" + ${country}`}
-                            className="form-check">
+                            className="form-check option">
+                            <input 
+                                className="form-check-input" type="radio" 
+                                name="answer" 
+                                // id="exampleRadios1" 
+                                value={country}
+                                onChange={handleClick}     
+                            />
                             <label 
                                 className="form-check-label" 
                                 htmlFor={country}>
                                 {country}
-                                <input 
-                                    className="form-check-input" type="radio" 
-                                    name="answer" 
-                                    // id="exampleRadios1" 
-                                    value={country}
-                                    onChange={handleClick}     
-                                />
                             </label>
                         </div>
                     ))}
+                    </div>
                     <button 
-                        className="btn btn-primary"
+                        className="btn submit-btn"
                         disabled
                         ref={submit}>
-                        Submit
+                        Answer
                     </button>
                 </form>
             </div>
             </>
         :
             <Results
-                questionsCount={questionsCount}
+                totalQuestions={totalQuestions}
                 setQuestionsCount={setQuestionsCount}
                 score={score} 
                 setScore={setScore}
             />
         }
-        </div>      
+        </>     
     )
 }
 

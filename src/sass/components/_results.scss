@@ -1,0 +1,13 @@
+.score-message{
+    font-size: 1.5rem;
+}
+
+.buttons-wrapper{
+    margin-top: 20px;
+
+    .restart-btn,
+    .home-btn{
+        @include button;
+    }
+}
+
