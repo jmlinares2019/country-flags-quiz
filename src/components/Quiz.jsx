@@ -57,8 +57,9 @@ function Quiz(props){
             <>
             <div className="row data-wrapper">
                 <h1 className="quiz-title">Flags Quiz</h1>
+                <p className="quiz-description">We'll show you {totalQuestions} flags and you need to guess which countries are they from.</p>
+                <p className="hint-warning"><i className="bi bi-info-circle-fill"></i>Click the <span className="highlight">info button</span> below the flag to see the <span className="highlight">country's capital</span>. But if you guess correct, your will <span className="highlight">only score 0.5 points</span> for this flag.</p>
                 <p className="questions-count">Round {questionsCount + 1} of {totalQuestions}</p>
-                <p className="hint-warning">Click the <span className="highlight">info button</span> below the flag to see the <span className="highlight">country's capital</span>. But if you guess correct, your will <span className="highlight">only score 0.5 points</span> for this flag.</p>
             </div>
             <div className="row quiz-wrapper">
                 <div className="col-sm-6 question-wrapper">

@@ -21,11 +21,10 @@ function Results(props){
         </div>
         <div className="row buttons-wrapper">
             <div className="col-6">
-                <button className="btn restart-btn" onClick={startOver}>Try again</button>
-            </div>
-            <div className="col-6">
-                <button className="btn home-btn">
-                    <a href="/">Back to home</a>
+                <button 
+                    className="btn restart-btn" 
+                    onClick={startOver}>
+                    Try again
                 </button>
             </div>
         </div>

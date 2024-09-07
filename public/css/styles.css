@@ -11887,12 +11887,19 @@ textarea.form-control-lg {
 
 .data-wrapper .quiz-title {
   font-family: "Nunito-Bold";
+  margin-bottom: 1rem;
+}
+.data-wrapper .quiz-description {
+  font-family: "Nunito-ExtraLight";
 }
 .data-wrapper .questions-count {
   font-family: "Nunito-ExtraLight";
 }
 .data-wrapper .hint-warning {
   font-family: "Nunito-ExtraLight";
+}
+.data-wrapper .hint-warning i {
+  margin-right: 0.5rem;
 }
 .data-wrapper .hint-warning .highlight {
   font-family: "Nunito-Bold";

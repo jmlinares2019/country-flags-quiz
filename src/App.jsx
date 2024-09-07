@@ -1,6 +1,5 @@
-import { BrowserRouter, Routes, Route, Link, NavLink } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import Home from './components/Home';
 import Quiz from './components/Quiz';
 
 function App() {
@@ -97,12 +96,6 @@ function App() {
           <Routes>
             <Route 
               index 
-              element={<Home 
-                          totalQuestions={totalQuestions}
-                        />} 
-            />
-            <Route 
-              path="quiz" 
               element={<Quiz 
                           countries={shuffledCountries}
                           okCountryData={okCountryData}
