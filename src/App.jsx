@@ -5,6 +5,8 @@ import Quiz from './components/Quiz';
 
 function App() {
 
+  const totalQuestions = 5;
+
   const [countriesData, setCountriesData] = useState([]);
 
   const [points, setPoints] = useState(0);
@@ -95,7 +97,10 @@ function App() {
           <Routes>
             <Route 
               index 
-              element={<Home />} />
+              element={<Home 
+                          totalQuestions={totalQuestions}
+                        />} 
+            />
             <Route 
               path="quiz" 
               element={<Quiz 
@@ -106,6 +111,7 @@ function App() {
                           handleCount={pointsCount}
                           score={points}
                           setScore={setPoints}
+                          totalQuestions={totalQuestions}
                           questionsCount={questionsCount}
                           setQuestionsCount={setQuestionsCount}
                         />}         
