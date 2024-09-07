@@ -5,9 +5,7 @@ import Results from './Results';
 function Quiz(props){
     console.log("Component rendered!");
 
-    const { countries, okCountryData, okCountry, okCountryFlag, handleCount, score, setScore, questionsCount, setQuestionsCount } = props;
-
-    const totalQuestions = 5;
+    const { countries, okCountryData, okCountry, okCountryFlag, handleCount, score, setScore, totalQuestions, questionsCount, setQuestionsCount } = props;
 
     const capital = okCountryData?.capital[0];
 
@@ -29,7 +27,6 @@ function Quiz(props){
 
     function handleAnswer(e){
         e.preventDefault();
-        // if (locked === false){
             let isCorrect = false;
             if(answer === okCountry){
                 isCorrect = true;
@@ -40,7 +37,6 @@ function Quiz(props){
             // disable "submit" button until one option is selected
             submit.current.setAttribute("disabled", ""); 
             submit.current.classList.remove("enabled");
-        // }
     }
 
     // showing / hiding capital
