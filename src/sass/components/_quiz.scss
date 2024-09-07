@@ -2,6 +2,11 @@
 
     .quiz-title{
         font-family: 'Nunito-Bold';
+        margin-bottom: 1rem;
+    }
+
+    .quiz-description{
+        font-family: 'Nunito-ExtraLight';
     }
 
     .questions-count{
@@ -10,6 +15,10 @@
 
     .hint-warning{
         font-family: 'Nunito-ExtraLight';
+
+        i{
+            margin-right: .5rem;
+        }
 
         .highlight{
             font-family: 'Nunito-Bold';
