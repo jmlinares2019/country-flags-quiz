@@ -4,7 +4,7 @@ function Home(){
         <div className="row">
             <div className="col">
                 <h1>Welcome to my Flags Quiz!</h1>
-                <p>Eu reprehenderit ex irure elit irure aute pariatur sint non. Laborum adipisicing tempor aliquip aliqua laboris occaecat nostrud pariatur. Amet Lorem excepteur dolor esse non dolor nostrud labore. Aute ea deserunt fugiat Lorem sit consectetur. Anim excepteur nostrud tempor consectetur consequat deserunt in do sit commodo reprehenderit amet esse ipsum.</p>
+                <p>Try to guess which country is every flag from. In case of doubt, you can have some help by getting a hint, but if you guess that flag, you will only score 0.5 points for it. Ready?</p>
                 <button className="btn start-btn">
                     <a href="/quiz">Start</a>
                 </button>

@@ -9,7 +9,7 @@ function App() {
 
   const [points, setPoints] = useState(0);
 
-  const [questionsCount, setQuestionsCount] = useState(1);
+  const [questionsCount, setQuestionsCount] = useState(0);
 
   // Using try / catch
   /* useEffect(() => {

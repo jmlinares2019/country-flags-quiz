@@ -1,6 +1,6 @@
 function Results(props){
     
-    const { questionsCount, setQuestionsCount, score, setScore } = props;
+    const { totalQuestions, setQuestionsCount, score, setScore } = props;
 
     function startOver(){
         setQuestionsCount(0);
@@ -10,12 +10,14 @@ function Results(props){
     return (
         <>
         <div className="row results-wrapper">
-            <p>You scored {score} out of {questionsCount}</p>
-            { score >= 3 ? 
-                "Congratulations, you won!"
-            :
-                "Oh, looks like you're a looser"
-            }
+            <div className="col">
+                <p className="score-message">You scored {score} out of {totalQuestions}</p>
+                { score >= ( totalQuestions / 2) ? 
+                    "Congratulations, you guessed enough of them!"
+                :
+                    "Looks like you could do better. Wanna try again?"
+                }
+            </div>
         </div>
         <div className="row buttons-wrapper">
             <div className="col-6">
