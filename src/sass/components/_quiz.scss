@@ -21,16 +21,18 @@
 
     .question-wrapper,
     .form-wrapper{
-        min-height: 300px;
+        
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        @include phone-up{
+            min-height: 300px;
+        }
     }
 
     .question-wrapper{
 
         .flag-wrapper{
-            // min-height: 300px;
 
             img.flag{
                 width: 100%;
@@ -42,6 +44,10 @@
         .hint-btn{
             text-align: left;
             margin-top: 20px;
+
+            @include phone-down{
+                margin-bottom: 20px;
+            }
 
             i{
                 font-size: 1.5rem;

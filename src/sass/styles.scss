@@ -16,15 +16,38 @@ div{
     // border: 1px solid purple;
 }
 
-body{
-    font-family: 'Nunito', sans-serif;
-    background-color: lightgreen;
+:root{
+    font-size: 16px;
+
+    @include tablet-down{
+        font-size: 14px;
+    }
 }
 
-.main-container{
-    max-width: 680px;
-    margin-top: 100px;
-    padding: 30px 40px;
-    background-color: $white;
-    box-shadow: 12px 12px 2px 1px $shadow;
+html{
+    height: 100%;
+
+    body{
+        font-family: 'Nunito', sans-serif;
+        background-image: linear-gradient($bg-gradient);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+
+        .main-container{
+            max-width: 680px;
+            margin-top: 100px;
+            padding: 30px 40px;
+            background-color: $white;
+            box-shadow: 12px 12px 2px 1px $shadow;
+
+            @include tablet-down{
+                max-width: 90vw;
+                margin: 50px auto; 
+            }
+        }
+    }
 }
+
+
+
+

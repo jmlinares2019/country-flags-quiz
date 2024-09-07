@@ -65,7 +65,7 @@ function Quiz(props){
                 <p className="hint-warning">Click the <span className="highlight">info button</span> below the flag to see the <span className="highlight">country's capital</span>. But if you guess correct, your will <span className="highlight">only score 0.5 points</span> for this flag.</p>
             </div>
             <div className="row quiz-wrapper">
-                <div className="col-6 question-wrapper">
+                <div className="col-sm-6 question-wrapper">
                     <div className="flag-wrapper"> 
                         <img 
                             src={okCountryFlag} 
@@ -80,7 +80,7 @@ function Quiz(props){
                     </button>
                 </div>
                 
-                <form className="col-6 form-wrapper"
+                <form className="col-sm-6 form-wrapper"
                     onSubmit={handleAnswer}>
                     <div className="options-wrapper">
                     {countries?.map((country, index) => (
